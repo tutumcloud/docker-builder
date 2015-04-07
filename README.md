@@ -34,7 +34,7 @@ Where:
 * `$USERNAME` is the username to use to log into the registry using `docker login`
 * `$PASSWORD` is the password to use to log into the registry using `docker login`
 * `$EMAIL` (optional) is the email to use to log into the registry using `docker login`
-
+* `$SKIP_CLEANUP` (optional) skip clearing local docker images after `docker push`. Must be set to 'true' to skip the cleanup.
 
 ## Build from compressed tarball
 
@@ -50,6 +50,7 @@ Where:
 * `$USERNAME` is the username to use to log into the registry using `docker login`
 * `$PASSWORD` is the password to use to log into the registry using `docker login`
 * `$EMAIL` (optional) is the email to use to log into the registry using `docker login`
+* `$SKIP_CLEANUP` (optional) skip clearing local docker images after `docker push`. Must be set to 'true' to skip the cleanup.
 
 
 # Testing

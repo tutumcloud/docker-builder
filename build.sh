@@ -84,7 +84,11 @@ if [ ! -z "$IMAGE_NAME" ]; then
 	if [ ! -z "$USERNAME" ] || [ ! -z "$DOCKERCFG" ] || [ -f /.dockercfg ]; then
 		echo "=>  Pushing image $IMAGE_NAME"
 		docker push $IMAGE_NAME
-		docker rmi -f $(docker images -q --no-trunc -a) > /dev/null 2>&1
+		if [ "$SKIP_CLEAN" != "true" ]; then
+			echo "=> Clearing images"
+			docker rmi -f $(docker images -q --no-trunc -a) > /dev/null 2>&1
+			exit 0
+		fi
 	fi
 else
 	echo "   WARNING: no \$IMAGE_NAME found - skipping build and push"
