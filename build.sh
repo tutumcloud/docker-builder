@@ -86,8 +86,7 @@ if [ ! -z "$IMAGE_NAME" ]; then
 		docker push $IMAGE_NAME
 		if [ "$SKIP_CLEAN" != "true" ]; then
 			echo "=> Clearing images"
-			docker rmi -f $(docker images -q --no-trunc -a) > /dev/null 2>&1
-			exit 0
+		  docker rmi $IMAGE_NAME > /dev/null 2>&1 || (echo "   WARNING: Failed to delete image")
 		fi
 	fi
 else
