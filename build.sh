@@ -53,6 +53,14 @@ else
 	echo "   WARNING: no \$USERNAME/\$PASSWORD or \$DOCKERCFG found - unable to load any credentials for pushing/pulling"
 fi
 
+if [ -f /keys/id_rsa ]; then
+	echo "=> Using key from /keys/id_rsa"
+	eval `ssh-agent -s`
+	cp /keys/id_rsa /root/id_rsa
+	chmod 400 /root/id_rsa
+	ssh-add /root/id_rsa
+fi
+
 rm -fr /src && mkdir -p /src
 echo "=> Detecting application"
 if [ ! -d /app ]; then

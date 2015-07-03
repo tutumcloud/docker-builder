@@ -109,6 +109,12 @@ And then run your builds as above appending `--volumes-from builder_cache` to th
 
 If your tests depend on private images, you can pass their credentials either by mounting your local `.dockercfg` file inside the container appending `-v $HOME/.dockercfg:/.dockercfg:r`, or by providing the contents of this file via an environment variable called `$DOCKERCFG`: `-e DOCKERCFG=$(cat $HOME/.dockercfg)`
 
+## SSH credentials and private repos
+
+If you're trying to deploy a private repository that needs SSH keys, mount your key into `/keys/id_rsa`. For GitHub repositories, you can add deploy keys from a project's settings page under "Deploy Keys".
+
+	 docker run -v /path/to/deploykey:/keys/id_rsa -e GIT_REPO=git@github.com:private/repo.git -e GIT_TAG=master ...
+
 ## Using the host docker daemon instead of docker-in-docker
 
 If you want to use the host docker daemon instead of letting the container run its own, mount the host's docker unix socket inside the container by appending `-v /var/run/docker.sock:/var/run/docker.sock:rw` to the `docker run` command.
