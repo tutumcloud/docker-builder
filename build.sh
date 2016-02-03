@@ -107,7 +107,7 @@ run_hook pre_build
 if [ -f "hooks/build" ]; then
 	run_hook build
 else
-	docker build --rm --force-rm --build-arg GIT_TAG=$GIT_TAG -t this .
+	docker build --rm --force-rm --build-arg GIT_BRANCH=$GIT_BRANCH -t this .
 fi
 run_hook post_build
 END_DATE=$(date +"%s")
