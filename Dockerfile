@@ -15,6 +15,7 @@ VOLUME /var/lib/docker
 RUN mkdir -p ~/.ssh && ssh-keyscan -H github.com | tee -a ~/.ssh/known_hosts
 
 ENV GIT_CLONE_OPTS="--recursive"
+ENV DOCKERFILE="Dockerfile"
 
 ADD version_list /
 ADD *.sh /

@@ -107,7 +107,7 @@ run_hook pre_build
 if [ -f "hooks/build" ]; then
 	run_hook build
 else
-	docker build --rm --force-rm -t this .
+	docker build -f $DOCKERFILE --rm --force-rm -t this .
 fi
 run_hook post_build
 END_DATE=$(date +"%s")
