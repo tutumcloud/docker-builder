@@ -93,9 +93,9 @@ cd /src${DOCKERFILE_PATH:-/}
 if [ -d "hooks" ]; then
 	chmod +x hooks/*
 fi
-if [ ! -f Dockerfile ]; then
+if [ ! -f $DOCKERFILE ]; then
 	print_msg "   WARNING: no Dockerfile detected! Created one using tutum/buildstep"
-	echo "FROM tutum/buildstep" >> Dockerfile
+	echo "FROM tutum/buildstep" >> $DOCKERFILE
 fi
 
 #
