@@ -75,6 +75,7 @@ if [ ! -d /app ]; then
 		print_msg "   Building commit ${GIT_SHA1}"
 		SOURCE="Building ${GIT_REPO##*@}@${GIT_SHA1}"
 		unset GIT_REPO
+		rm -f /src/.git/config
 	elif [ ! -z "$TGZ_URL" ]; then
 		print_msg "   Downloading $TGZ_URL"
 		curl -sL $TGZ_URL | tar zx -C /src
@@ -89,6 +90,7 @@ else
 	print_msg "   $SOURCE"
 	cp -r /app/. /src
 fi
+
 cd /src${DOCKERFILE_PATH:-/}
 if [ -d "hooks" ]; then
 	chmod +x hooks/*
